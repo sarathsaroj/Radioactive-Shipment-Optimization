@@ -10,7 +10,35 @@ To solve MCFP, two necessary constraints must be considered. The first one is th
 
 G(V,E) is a directed network. Here V and E are the set of nodes and edges and they have a size of n and m, respectively. For each edge ij, there is a cost cij and capacity uij. We need to transport K kinds of commodities from their origin nodes to destination nodes. s and t are used to represent origin and destination node of commodity k. In addition, dk is the travel demand of commodity k. We need to find an optimal flow assignment with minimum cost, satisfying the travel demand and edge disjoint constraints for this problem. Thus, the MCFN problem can be formulated as following:
 
-![Formulation](Formulation.png)
+``` math
+\min_{\mathbf{Z}^*} (\mathbf{x}) = \sum_{i,j,k} c_{ij} x_{ijk} \quad \text{subject to}
+```
+
+``` math
+Constraint 1:
+
+\sum_{i,j \in \mathcal{A}} x_{ijk} - \sum_{j,i \in \mathcal{A}} x_{jik} = b_{ik} \quad \forall i \in \mathcal{N}, \forall k \in \mathcal{K}
+``` 
+``` math
+Constraint 2:
+
+\sum_{i,j \in \mathcal{A}} x_{ijk} \leq u_{ij} \quad \forall (i,j) \in \mathcal{A}
+``` 
+
+``` math
+Variable Restriction:
+
+x_{ijk} \in \{0,1\} \quad \text{for } i \in \mathcal{A}, \forall k \in \mathcal{K}
+```
+
+``` math
+Where:b_{ik} = 
+\begin{cases}
+d_k & \text{if } i = s_k \\
+-d_k & \text{if } i = t_k \\
+0 & \text{if } i \in \mathcal{N} \setminus \{s_k, t_k\}
+\end{cases}
+```
 
 The objective function aims to minimize the total transportation cost. Constraint 1 is the supply/demand constraint. Constraint 2 is the capacity constraint . Capacity of every edge is set to 1 making this an edge disjoint problem and variable restriction 3 decides whether flow of commodity k happens on edge i,j.
 
