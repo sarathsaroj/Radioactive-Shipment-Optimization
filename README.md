@@ -1,4 +1,4 @@
-## Optimization of multi commodity network flow
+## Radioactive Shipment Optimization
 
 ### Problem Statement
 The objective of this project is to formulate a linear program for solving an edge disjoint multi commodity network flow problem. The selected problem involves sending shipments carrying radioactive materials from multiple origin points to the corresponding destinations. The objective is to find edge disjoint routes (same route is not shared by shipments) while solving the MCNF at the minimum cost possible. Road network of West Virginia is the graph network used for this purpose.
